@@ -32,13 +32,13 @@ for epoch in range(epochs):
         train_x1, train_x2, labels = train_x1.to(device), train_x2.to(device), labels.to(device)
 
         train_outputs = model(train_x1, train_x2)
-        trian_loss = criterion(train_outputs, labels)
+        train_loss = criterion(train_outputs, labels)
 
         optimizer.zero_grad()
-        trian_loss.backward()
+        train_loss.backward()
         optimizer.step()
 
-        total_train_loss += trian_loss.item() * train_x1.size(0)
+        total_train_loss += train_loss.item() * train_x1.size(0)
 
     model.eval()
     with torch.no_grad():
