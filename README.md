@@ -9,7 +9,7 @@
 
 可以将代码fork走，之后根据自己的需求写一个自己的pytorch程序框架
 
-## 英文介绍
+## English Introduction
 
 Made for beginners
 
