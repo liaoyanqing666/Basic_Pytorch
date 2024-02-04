@@ -22,7 +22,7 @@ model = GRUNetwork(input_size=10, linear_hidden_size=20, gru_hidden_size=30, num
 criterion = nn.CrossEntropyLoss().to(device)
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-lowest_test_loss = float('inf')
+lowest_test_loss = 1e10
 for epoch in range(epochs):
     total_train_loss = 0
     total_test_loss = 0
@@ -50,8 +50,9 @@ for epoch in range(epochs):
 
             total_test_loss += test_loss.item() * test_x1.size(0)
 
-    print(f'Epoch [{epoch+1}/{epochs}], Train Loss: {total_train_loss/len(train_dataset)}, Test Loss: {total_test_loss/len(test_dataset)}, Lowest Test Loss: {lowest_test_loss}')
 
     if total_test_loss \ len(test_dataset) < lowest_test_loss:
         lowest_test_loss = total_test_loss \ len(test_dataset) 
         torch.save(model.state_dict(), 'model.pth')
+
+    print(f'Epoch [{epoch+1}/{epochs}], Train Loss: {total_train_loss/len(train_dataset)}, Test Loss: {total_test_loss/len(test_dataset)}, Lowest Test Loss: {lowest_test_loss}')
