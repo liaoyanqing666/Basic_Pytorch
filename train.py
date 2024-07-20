@@ -51,8 +51,8 @@ for epoch in range(epochs):
             total_test_loss += test_loss.item() * test_x1.size(0)
 
 
-    if total_test_loss \ len(test_dataset) < lowest_test_loss:
-        lowest_test_loss = total_test_loss \ len(test_dataset) 
+    if total_test_loss / len(test_dataset) < lowest_test_loss:
+        lowest_test_loss = total_test_loss / len(test_dataset) 
         torch.save(model.state_dict(), 'model.pth')
 
     print(f'Epoch [{epoch+1}/{epochs}], Train Loss: {total_train_loss/len(train_dataset)}, Test Loss: {total_test_loss/len(test_dataset)}, Lowest Test Loss: {lowest_test_loss}')
