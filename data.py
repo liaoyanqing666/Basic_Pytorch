@@ -2,8 +2,9 @@ import torch
 from torch.utils.data import Dataset
 
 class SimpleDataset(Dataset):
-    def __init__(self, data):
-        self.data = data 
+    def __init__(self, data, train=True):
+        self.data = data
+        self.train = train
 
     def __len__(self):
         return len(self.data)
@@ -20,10 +21,10 @@ class SimpleDataset(Dataset):
 if __name__ == "__main__":
     # Example usage with dummy data
     dummy_data = [
-        {'x1': [[1.0]], 'x2': [[1.0]], 'label': [[1, 0]},
+        {'x1': [[1.0]], 'x2': [[1.0]], 'label': [[1, 0]]},
         # Add more samples as needed
     ]
 
-    dataset = SimpleDataset(dummy_data)
+    dataset = SimpleDataset(data=dummy_data)
     print(len(dataset))
     print(dataset[0])
